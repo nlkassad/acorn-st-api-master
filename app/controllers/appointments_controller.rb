@@ -1,5 +1,6 @@
-class AppointmentsController < ApplicationController
+class AppointmentsController < OpenReadController
   before_action :set_appointment, only: [:show, :update, :destroy]
+  before_action :set_current_user, only: [:create]
 
   # GET /appointments
   # GET /appointments.json
@@ -19,6 +20,7 @@ class AppointmentsController < ApplicationController
   # POST /appointments.json
   def create
     @appointment = Appointment.new(appointment_params)
+    @appointment.user_id = current_user.id
 
     if @appointment.save
       render json: @appointment, status: :created, location: @appointment
@@ -49,11 +51,15 @@ class AppointmentsController < ApplicationController
 
   private
 
-    def set_appointment
-      @appointment = Appointment.find(params[:id])
-    end
+  def set_current_user
+    @current_user_id = current_user.id
+  end
 
-    def appointment_params
-      params.require(:appointment).permit(:user_id, :slot_id)
-    end
+  def set_appointment
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def appointment_params
+    params.require(:appointment).permit(:user_id, :slot_id)
+  end
 end
