@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+slots = Slot.create([{ time_block: '2016-11-11 09:00' },
+                     { time_block: '2016-11-11 11:00' },
+                     { time_block: '2016-11-11 13:00' }])
