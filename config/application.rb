@@ -43,7 +43,7 @@ module AcornStApiMaster
     cors_port = 'GA'.each_byte.reduce('') { |a, e| a + format('%d', e) }.to_i
     config.middleware.use Rack::Cors do
       allow do
-        origins ENV['CLIENT_ORIGIN'] || "https://nlkassad.github.io/acorn-st-ember-client"
+        origins ENV['CLIENT_ORIGIN'] || "https://nlkassad.github.io"
         resource '*',
                  headers: :any,
                  methods: [:options, :get,
