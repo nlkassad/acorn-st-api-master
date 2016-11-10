@@ -19,8 +19,7 @@ class AppointmentsController < ProtectedController
   # POST /appointments
   # POST /appointments.json
   def create
-    @appointment = current_user.appointments.build(item_params)
-    # @appointment.user_id = current_user.id
+    @appointment = current_user.appointments.build(appointment_params)
 
     if @appointment.save
       render json: @appointment, status: :created, location: @appointment
