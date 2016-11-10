@@ -37,13 +37,14 @@ module AcornStApiMaster
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-
+    # http://localhost:7165
+    # https://nlkassad.github.io
     # Cross-Origin Resource Sharing
     # development client port
     cors_port = 'GA'.each_byte.reduce('') { |a, e| a + format('%d', e) }.to_i
     config.middleware.use Rack::Cors do
       allow do
-        origins ENV['CLIENT_ORIGIN'] || "https://nlkassad.github.io"
+        origins ENV['CLIENT_ORIGIN'] || 'http://localhost:7165'
         resource '*',
                  headers: :any,
                  methods: [:options, :get,
