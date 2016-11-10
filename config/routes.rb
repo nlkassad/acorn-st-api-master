@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :appointments, except: [:new, :edit]
-  resources :slots, except: [:new, :edit]
+  resources :slots, except: [:new, :edit, :destroy]
   resources :examples, except: [:new, :edit]
   post '/sign-up' => 'users#signup'
   post '/sign-in' => 'users#signin'

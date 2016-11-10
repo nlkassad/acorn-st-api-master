@@ -1,5 +1,5 @@
-class SlotsController < ApplicationController
-  before_action :set_slot, only: [:show, :update, :destroy]
+class SlotsController < ProtectedController
+  before_action :set_slot, only: [:update, :destroy]
 
   # GET /slots
   # GET /slots.json
@@ -18,7 +18,7 @@ class SlotsController < ApplicationController
   # POST /slots
   # POST /slots.json
   def create
-    @slot = Slot.new(slot_params)
+    @slot = current_user.slots.build(item_params)
 
     if @slot.save
       render json: @slot, status: :created, location: @slot
@@ -30,7 +30,7 @@ class SlotsController < ApplicationController
   # PATCH/PUT /slots/1
   # PATCH/PUT /slots/1.json
   def update
-    @slot = Slot.find(params[:id])
+    # @slot = Slot.find(params[:id])
 
     if @slot.update(slot_params)
       head :no_content
@@ -41,16 +41,16 @@ class SlotsController < ApplicationController
 
   # DELETE /slots/1
   # DELETE /slots/1.json
-  def destroy
-    @slot.destroy
-
-    head :no_content
-  end
+  # def destroy
+  #   @slot.destroy
+  #
+  #   head :no_content
+  # end
 
   private
 
     def set_slot
-      @slot = Slot.find(params[:id])
+      @slot = current_user.slots.find(params[:id])
     end
 
     def slot_params
