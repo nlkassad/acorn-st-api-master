@@ -1,7 +1,5 @@
 class AppointmentSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :slot_id, :editable, :user, :slot, :slot
-  belongs_to :user
-  has_one :slot
+  attributes :id, :user, :slot, :editable
 
   def editable
     scope == object.user
