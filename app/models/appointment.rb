@@ -1,4 +1,4 @@
 class Appointment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :slot
+  has_one :slot
 end
