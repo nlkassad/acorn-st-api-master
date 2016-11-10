@@ -1,11 +1,11 @@
-class AppointmentsController < OpenReadController
+class AppointmentsController < ProtectedController
   before_action :set_appointment, only: [:show, :update, :destroy]
   before_action :set_current_user, only: [:create]
 
   # GET /appointments
   # GET /appointments.json
   def index
-    @appointments = Appointment.all
+    @appointments = current_user.appointments
 
     render json: @appointments
   end
@@ -19,8 +19,8 @@ class AppointmentsController < OpenReadController
   # POST /appointments
   # POST /appointments.json
   def create
-    @appointment = Appointment.new(appointment_params)
-    @appointment.user_id = current_user.id
+    @appointment = current_user.appointments.build(item_params)
+    # @appointment.user_id = current_user.id
 
     if @appointment.save
       render json: @appointment, status: :created, location: @appointment
@@ -32,7 +32,7 @@ class AppointmentsController < OpenReadController
   # PATCH/PUT /appointments/1
   # PATCH/PUT /appointments/1.json
   def update
-    @appointment = Appointment.find(params[:id])
+    # @appointment = Appointment.find(params[:id])
 
     if @appointment.update(appointment_params)
       head :no_content
@@ -56,7 +56,7 @@ class AppointmentsController < OpenReadController
   end
 
   def set_appointment
-    @appointment = Appointment.find(params[:id])
+    @appointment = current_user.appointments.find(params[:id])
   end
 
   def appointment_params
