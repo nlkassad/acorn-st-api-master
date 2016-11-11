@@ -49,11 +49,11 @@ class SlotsController < OpenReadController
 
   private
 
-    def set_slot
-      @slot = Slot.find(params[:id])
-    end
+  def set_slot
+    @slot = Slot.find(params[:id])
+  end
 
-    def slot_params
-      params.require(:slot).permit(:time_block)
-    end
+  def slot_params
+    params.require(:slot).permit(:time_block, :available)
+  end
 end
