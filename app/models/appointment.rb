@@ -1,5 +1,5 @@
 class Appointment < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, inverse_of: :appointments
   has_one :slot
 
   validates :user, presence: true

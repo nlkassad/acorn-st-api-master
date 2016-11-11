@@ -1,4 +1,4 @@
-class AppointmentsController < ProtectedController
+class AppointmentsController < OpenReadController
   before_action :set_appointment, only: [:show, :update, :destroy]
   # before_action :set_current_user, only: [:create]
 
