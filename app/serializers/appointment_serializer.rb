@@ -11,5 +11,5 @@ class AppointmentSerializer < ActiveModel::Serializer
   #
   # def slot # like belongs_to, but just give me the id
   #   object.slot_id # => 1
-  end
+  # end
 end
