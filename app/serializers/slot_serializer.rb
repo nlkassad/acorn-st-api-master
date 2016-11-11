@@ -1,8 +1,3 @@
 class SlotSerializer < ActiveModel::Serializer
-  attributes :id, :time_block
-  # , :available
-
-  # def available
-  #
-  # end
+  attributes :id, :time_block, :available
 end

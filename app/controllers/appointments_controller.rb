@@ -1,6 +1,6 @@
-class AppointmentsController < OpenReadController
+class AppointmentsController < ProtectedController
   before_action :set_appointment, only: [:show, :update, :destroy]
-  before_action :set_current_user, only: [:create]
+  # before_action :set_current_user, only: [:create]
 
   # GET /appointments
   # GET /appointments.json
@@ -50,9 +50,9 @@ class AppointmentsController < OpenReadController
 
   private
 
-  def set_current_user
-    @current_user_id = current_user.id
-  end
+  # def set_current_user
+  #   @current_user_id = current_user.id
+  # end
 
   def set_appointment
     @appointment = current_user.appointments.find(params[:id])

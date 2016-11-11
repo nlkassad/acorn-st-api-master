@@ -6,6 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-slots = Slot.create([{ time_block: '2016-11-11 09:00' },
-                     { time_block: '2016-11-11 11:00' },
-                     { time_block: '2016-11-11 13:00' }])
+Slot.create(
+  [
+    { time_block: '2016-11-11 09:00', available: true },
+    { time_block: '2016-11-12 09:00', available: true },
+    { time_block: '2016-11-13 09:00', available: true },
+    { time_block: '2016-11-14 09:00', available: true },
+    { time_block: '2016-11-15 09:00', available: true },
+    { time_block: '2016-11-16 09:00', available: true },
+    { time_block: '2016-11-17 09:00', available: true },
+    { time_block: '2016-11-18 09:00', available: true },
+    { time_block: '2016-11-19 09:00', available: true },
+    { time_block: '2016-11-20 09:00', available: true },
+    { time_block: '2016-11-21 09:00', available: true }
+  ]
+)
