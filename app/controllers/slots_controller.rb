@@ -1,6 +1,6 @@
 class SlotsController < ProtectedController
   before_action :set_slot, only: [:update, :destroy]
-
+  
   # GET /slots
   # GET /slots.json
   def index
