@@ -1,4 +1,4 @@
-class AppointmentsController < ProtectedController
+class AppointmentsController < OpenReadController
   before_action :set_appointment, only: [:show, :update, :destroy]
   # before_action :set_current_user, only: [:create]
 
@@ -19,7 +19,7 @@ class AppointmentsController < ProtectedController
   # POST /appointments
   # POST /appointments.json
   def create
-    @example = current_user.examples.build(example_params)
+    @appointment = current_user.appointments.build(appointment_params)
 
     if @appointment.save
       render json: @appointment, status: :created, location: @appointment
